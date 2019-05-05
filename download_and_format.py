@@ -1,20 +1,20 @@
-import urllib.request as ur 
+import urllib.request as ur
 
 
-duzy_lotek = 'https://app.lotto.pl/wyniki/?type=dl'
-lotto_plus = 'https://app.lotto.pl/wyniki/?type=lp'
+DUZY_LOTEK = 'https://app.lotto.pl/wyniki/?type=dl'
+LOTTO_PLUS = 'https://app.lotto.pl/wyniki/?type=lp'
 
 
 def get_content(url_):
     '''opens url and gets the content from the website
-    returns content in bytes, *results need to be decoded 
+    returns content in bytes, *results need to be decoded
     '''
-    with ur.urlopen(url_) as w:
-        return w.read()
+    with ur.urlopen(url_) as content_:
+        return content_.read()
 
 
 def decode_content(content_):
-    '''decodes the content, 
+    '''decodes the content,
     uses utf-8 as it is the most commont type of coding,
     returns a string
     '''
@@ -29,7 +29,7 @@ def remove_delimiters(string_, delimiter_):
 
 
 def extract_date(content_list):
-    '''takes a list of strings, in our case, 
+    '''takes a list of strings, in our case,
     date is always at the very beginning of the list,
     returns string with date
     '''
@@ -50,21 +50,20 @@ def convert_sort_results(content_list):
 
 
 def list_to_string(content_list):
-    #return str(content_list)[1:-1] 
+    #return str(content_list)[1:-1]
     return ', '.join(str(x) for x in content_list)
 
 
 def work_loop(url):
-    r = remove_delimiters(decode_content(get_content(url)), '\n')
-    date = extract_date(r)
-    numbers = convert_sort_results(r)
-    nn = list_to_string(numbers)
-    return date + '\n' + nn
+    removed_ = remove_delimiters(decode_content(get_content(url)), '\n')
+    date = extract_date(removed_)
+    numbers = convert_sort_results(removed_)
+    numbers_string = list_to_string(numbers)
+    return date + '\n' + numbers_string
 
 
 def get_stuff_done(*args):
-    for a in args:
-        print(work_loop(a))
+    for argument_ in args:
+        print(work_loop(argument_))
 
-get_stuff_done(duzy_lotek, lotto_plus)
-
+get_stuff_done(DUZY_LOTEK, LOTTO_PLUS)

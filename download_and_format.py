@@ -62,8 +62,9 @@ def work_loop(url):
     return date + '\n' + numbers_string
 
 
-def get_stuff_done(*args):
+def get_newest_numbers(*args):
     for argument_ in args:
         print(work_loop(argument_))
 
-get_stuff_done(DUZY_LOTEK, LOTTO_PLUS)
+get_newest_numbers(DUZY_LOTEK, LOTTO_PLUS)
+print('Hope you liked it :)')

@@ -8,6 +8,15 @@ LOTTO_PLUS = 'https://app.lotto.pl/wyniki/?type=lp'
 def get_content(url_):
     '''opens url and gets the content from the website
     returns content in bytes, *results need to be decoded
+
+    **Args**
+        :url_: description
+
+    **Return**
+        Desc
+
+    **Raises**
+        nazwa_bledu
     '''
     with ur.urlopen(url_) as content_:
         return content_.read()

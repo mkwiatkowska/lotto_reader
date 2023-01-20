@@ -8,7 +8,7 @@ Results are presented in a form of a string e.g. 1, 2, 3, 4, 5, 6.
 
 ## Future development
 Goals for now:
-- [] schedule script to run on certain dates
-- [] trigger script on demand via sms
-- [] allow script to send sms with results
+- [ ] schedule script to run on certain dates
+- [ ] trigger script on demand via sms
+- [ ] allow script to send sms with results
 
